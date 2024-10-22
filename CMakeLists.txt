@@ -1,16 +1,31 @@
-# CMakeLists.txt
-cmake_minimum_required(VERSION 3.10)
-project(matrix_inverse)
+cmake_minimum_required(VERSION 3.10)  # Specify CMake version
+project(YourProjectName)                # Replace with your project name
 
-# Enable testing
-enable_testing()
+# Set C++ standard
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# Add GoogleTest as a submodule or package
-add_subdirectory(googletest)
+# Find gtest
+find_package(GTest REQUIRED)
+include_directories(${GTEST_INCLUDE_DIRS})
 
-add_executable(MyTests test.cpp)
+# Source files
+set(SOURCES
+    src/Matrix.cpp
+    src/faddeev_leverrier.cpp
+)
 
-# Link GoogleTest
-target_link_libraries(MyTests gtest gtest_main)
+# Test files
+set(TEST_SOURCES
+    test/test_matrix.cpp
+)
 
-add_test(NAME MyTests COMMAND MyTests)
+# Create the main executable
+add_executable(MainExecutable ${SOURCES})
+
+# Create the test executable
+add_executable(TestExecutable ${TEST_SOURCES} src/Matrix.cpp)
+
+# Link gtest and gtest_main to your test executable
+target_link_libraries(TestExecutable ${GTEST_LIBRARIES} pthread)
+
