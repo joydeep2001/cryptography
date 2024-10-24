@@ -4,7 +4,7 @@ Here we have implemented faddev-lavier algorithm for a GF(2) matrix.
 
 1. **Clone the repository**:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/joydeep2001/cryptography.git
    ```
 
 2. **Navigate into the project directory**:
