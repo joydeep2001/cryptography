@@ -40,11 +40,11 @@ Matrix<T>::Matrix(T poly)
 
     M.resize(totalBits, 0);
 
-    for (T i = totalBits; i > 0; i--)
+    for (T i = 0; i < totalBits; i++)
     {
 
-        M[i] |= (1 << totalBits);
-        T bit = (poly >> (totalBits - i - 1)) & 1;
+        M[i] |= (1 << totalBits - i);
+        T bit = (poly >> i) & 1;
         M[i] |= bit;
     }
 }
