@@ -11,6 +11,30 @@ TEST(MatrixTest, DefaultConstructor)
     Matrix<uint32_t> mat;
     EXPECT_EQ(mat.size(), 0); 
 }
+
+
+TEST(MatrixTest, CharPolyConstructorTest) 
+{
+    uint8_t mask = 0b00011110;
+    Matrix<uint8_t> input(mask);
+    vector<uint8_t> outputShouldBe = {
+        0b00000000,
+        0b10000001,
+        0b01000001,
+        0b00100001,
+        0b00010001,
+        0b00001000,
+        0b00000100,
+        0b00000010
+    };
+    input.debugPrint();
+    vector<uint8_t> inputV = input.get();
+    
+    EXPECT_TRUE(equal(inputV.begin(), inputV.end(), outputShouldBe.begin()));
+
+}
+
+
 TEST(MatrixTest, Transpose) 
 {
     vector<uint8_t> v1 = {
