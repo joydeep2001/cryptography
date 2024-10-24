@@ -8,11 +8,13 @@
 using namespace std;
 
 template <typename T>
-int popcount(T x) {
+int popcount(T n)
+{
     int count = 0;
-    while (x) {
-        count += x & 1;  
-        x >>= 1;         
+    while (n)
+    {
+        n &= (n - 1);
+        count++;
     }
     return count;
 }
