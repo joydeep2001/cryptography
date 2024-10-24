@@ -20,8 +20,8 @@ set(TEST_SOURCES
     test/test_matrix.cpp
 )
 
-# Create the main executable
-add_executable(MainExecutable ${SOURCES})
+# Uncomment to create the main executable if needed
+# add_executable(MainExecutable ${SOURCES})
 
 # Create the test executable
 add_executable(TestExecutable ${TEST_SOURCES} src/Matrix.cpp)
