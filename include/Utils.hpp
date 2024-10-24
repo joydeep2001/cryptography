@@ -1,5 +1,7 @@
 #pragma once
+#include<vector>
 
+using namespace std;
 /**
  * @brief Counts the number of set bits in the polynomial
  * @param n Unsinged integer number
