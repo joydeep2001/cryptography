@@ -46,24 +46,3 @@ public:
         return AInverse;
     }
 };
-
-int main()
-{
-    // x^32 + x^22 + x^21 + x^20 + x^18 + x^17 + x^15 + x^13 + x^12 + x^10 + x^8 + x^6 + x^4 + x^1 + 1
-    vector<int> terms = {32, 22, 21, 20, 18, 17, 15, 13, 12, 10, 8, 6, 4, 1, 0};
-    uint32_t mask = createPoly<uint32_t>(terms);
-
-    cout << setw(8) << setfill('0') << hex << mask << " ";
-
-    cout << endl;
-
-    Matrix<uint32_t> M(mask);
-
-    M.debugPrint();
-
-    FaddevLaverrier<uint32_t> fl(M);
-
-    Matrix<uint32_t> MInverse = fl.findInverse();
-
-    MInverse.debugPrint();
-}
