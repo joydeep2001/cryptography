@@ -15,6 +15,7 @@ file(GLOB SOURCES "src/*.cpp")
 # Test files (including the source files)
 set(TEST_SOURCES
     test/test_matrix.cpp
+    test/test_utils.cpp
     ${SOURCES}
 )
 
