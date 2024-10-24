@@ -1,26 +1,11 @@
 #include <iostream>
 #include <bits/stdc++.h>
 #include "../include/Matrix.hpp"
+#include "../include/Utils.hpp"
 
 using namespace std;
 
-/**
- * @brief Extracts co-efficients from the polynomial
- * @param term List of terms present in the polynomial
- * @return An integer where each bit represent the co-efficients
- */
-template <typename T>
-T createPoly(vector<int> &terms)
-{
-    T poly = 0;
 
-    for (auto term : terms)
-    {
-        poly |= (1 << term);
-    }
-
-    return poly;
-}
 
 /**
  * @brief Finds the matrix inverse using faddev laverrier algorithm

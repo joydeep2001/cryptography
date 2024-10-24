@@ -2,22 +2,10 @@
 #include <iostream>
 #include <vector>
 #include "../include/Matrix.hpp"
-#include<bitset>
-
+#include "../include/Utils.hpp"
 
 using namespace std;
 
-template <typename T>
-int popcount(T n)
-{
-    int count = 0;
-    while (n)
-    {
-        n &= (n - 1);
-        count++;
-    }
-    return count;
-}
 
 template <typename T>
 Matrix<T>::Matrix() {}
@@ -127,7 +115,7 @@ Matrix<T> Matrix<T>::operator*(Matrix<T> &B)
     {
         for (int j = 0; j < n; j++)
         {
-            result[i] |= (popcount(M[i] & BT[j]) & 1) << (n - 1 - j);
+            result[i] |= (popcount<T>(M[i] & BT[j]) & 1) << (n - 1 - j);
         }
     }
 
