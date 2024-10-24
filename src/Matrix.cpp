@@ -34,7 +34,7 @@ Matrix<T>::Matrix(int n, bool isIdentity)
 }
 
 template <typename T>
-Matrix<T>::Matrix(T poly)
+Matrix<T>::Matrix(T polyMask)
 {
     int totalBits = sizeof(T) * 8;
 
@@ -44,7 +44,7 @@ Matrix<T>::Matrix(T poly)
     {
 
         M[i] |= (1 << totalBits - i);
-        T bit = (poly >> i) & 1;
+        T bit = (polyMask >> i) & 1;
         M[i] |= bit;
     }
 }
