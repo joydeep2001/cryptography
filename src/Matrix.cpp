@@ -1,11 +1,10 @@
-#include<stdio.h>
 #include <iostream>
 #include <vector>
 #include "../include/Matrix.hpp"
+#include <bitset>
 #include "../include/Utils.hpp"
 
 using namespace std;
-
 
 template <typename T>
 Matrix<T>::Matrix() {}
@@ -45,7 +44,7 @@ Matrix<T>::Matrix(T poly)
     {
 
         M[i] |= (1 << totalBits);
-        T bit = (poly >> (i - 1)) & 1;
+        T bit = (poly >> (totalBits - i - 1)) & 1;
         M[i] |= bit;
     }
 }
@@ -80,13 +79,14 @@ Matrix<T> Matrix<T>::getTranspose()
 {
     int n = M.size();
     Matrix<T> transpose(n, 0);
-    
-    for(int i = 0;i < n;i++)
+
+    for (int i = 0; i < n; i++)
     {
-        for(int j = 0;j < n;j++)
+        for (int j = 0; j < n; j++)
         {
             transpose[i] |= (M[j] >> (n - 1 - i) & 1);
-            if(j == n - 1) continue;
+            if (j == n - 1)
+                continue;
             transpose[i] <<= 1;
         }
     }
@@ -106,7 +106,7 @@ Matrix<T> Matrix<T>::operator*(T d)
 template <typename T>
 Matrix<T> Matrix<T>::operator*(Matrix<T> &B)
 {
-    
+
     Matrix<T> BT = B.getTranspose();
     int n = M.size();
     Matrix<T> result(n, 0);
@@ -145,7 +145,7 @@ Matrix<T> &Matrix<T>::operator=(const Matrix<T> &X)
 }
 
 template <typename T>
-T& Matrix<T>::operator[](int index) 
+T &Matrix<T>::operator[](int index)
 {
     return M[index];
 }
@@ -160,8 +160,6 @@ void Matrix<T>::debugPrint()
     }
     cout << "\n";
 }
-
-
 
 template class Matrix<uint8_t>;
 template class Matrix<uint16_t>;
