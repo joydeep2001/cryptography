@@ -113,6 +113,25 @@ TEST(MatrixTest, MultiplyTwoMatrix)
 
 }
 
+TEST(MatrixTest, GetTrace) 
+{
+    vector<uint8_t> v1 = {
+        0b00000100,
+        0b00000010,
+        0b00000101,
+        0b10000110,
+        0b01000111,
+        0b00100011,
+        0b00010001,
+        0b00001000,
+    };
+
+    Matrix<uint8_t> mat(v1);
+
+    int tr = mat.getTrace();
+
+    EXPECT_EQ(tr, 0);
+}
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
