@@ -15,11 +15,11 @@ TEST(MatrixTest, DefaultConstructor)
 
 TEST(MatrixTest, CharPolyConstructorTest) 
 {
-    uint8_t mask = 0b00011110;
+    uint8_t mask = 0b00011101;
     Matrix<uint8_t> input(mask);
     vector<uint8_t> outputShouldBe = {
-        0b00000000,
-        0b10000001,
+        0b00000001,
+        0b10000000,
         0b01000001,
         0b00100001,
         0b00010001,
