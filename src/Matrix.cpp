@@ -68,7 +68,7 @@ int Matrix<T>::getTrace()
     int n = M.size();
     for (int i = n - 1; i >= 0; i--)
     {
-        t ^= (M[i] >> i) & 1;
+        t ^= (M[n - 1 - i] >> i) & 1;
     }
 
     return t;
