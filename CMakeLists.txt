@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 3.10)  # Specify CMake version
-project(YourProjectName)                # Replace with your project name
+cmake_minimum_required(VERSION 3.10)  
+project(Cryptography)               
 
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 14)
@@ -16,6 +16,7 @@ file(GLOB SOURCES "src/*.cpp")
 set(TEST_SOURCES
     test/test_matrix.cpp
     test/test_utils.cpp
+    test/test_faddev_leverrier.cpp
     ${SOURCES}
 )
 
@@ -25,6 +26,5 @@ set(TEST_SOURCES
 # Create the test executable
 add_executable(TestExecutable ${TEST_SOURCES})
 
-# Link gtest and gtest_main to your test executable
+# Link gtest and pthread to the test executable
 target_link_libraries(TestExecutable ${GTEST_LIBRARIES} pthread)
-

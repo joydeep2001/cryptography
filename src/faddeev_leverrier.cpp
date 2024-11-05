@@ -2,47 +2,44 @@
 #include <bits/stdc++.h>
 #include "../include/Matrix.hpp"
 #include "../include/Utils.hpp"
+#include "../include/faddev_leverrier.hpp"
 
 using namespace std;
 
-
-
-/**
- * @brief Finds the matrix inverse using faddev laverrier algorithm
- */
 template <typename T>
-class FaddevLaverrier
+FaddevLaverrier<T>::FaddevLaverrier(Matrix<T> M)
 {
-    Matrix<T> A;
-    uint8_t n;
-    Matrix<T> AInverse;
+    A = M;
+    n = M.size();
+}
 
-public:
-    FaddevLaverrier(Matrix<T> M)
+template <typename T>
+Matrix<T> FaddevLaverrier<T>::findInverse()
+{
+    Matrix<T> B = A;
+    Matrix<T> I(n, 1);
+
+    for (int i = 0; i < n; i++)
     {
-        A = M;
-        n = M.size();
-    }
-
-    Matrix<T> findInverse()
-    {
-        Matrix<T> B(A);
-        Matrix<T> I(n, 1);
-
-        for (int i = 0; i < n; i++)
+        int d = B.getTrace();  
+        cout << "Trace" << i << ": " << d << endl;
+        Matrix<T> dI = I * d;  
+        Matrix<T> D = B ^ dI;   
+        B = A * D;   
+        cout << "D" << i;         
+        D.debugPrint();
+        cout << "B" << i + 1;  
+        B.debugPrint();
+        if (i == n - 2)
         {
-            T d = B.getTrace();
-
-            Matrix<T> DI(I * d);
-            Matrix<T> D(B ^ DI);
-            B = A * D;
-
-            if (i == n - 1)
-            {
-                AInverse = D;
-            }
+            AInverse = D;      
         }
-
-        return AInverse;
     }
-};
+
+    return AInverse; 
+}
+
+template class FaddevLaverrier<uint8_t>;
+template class FaddevLaverrier<uint16_t>;
+template class FaddevLaverrier<uint32_t>;
+template class FaddevLaverrier<uint64_t>;
